@@ -72,6 +72,7 @@ public class Inicio extends javax.swing.JFrame {
     String select = file.getAbsolutePath(); 
         try {
             leer(select);
+            recorrido();
             this.dispose();
             // TODO add your handling code here:
         } catch (IOException ex) {
@@ -119,14 +120,25 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFileChooser jFileChooser1;
     // End of variables declaration//GEN-END:variables
+    static String[] fila = null;
+    static String[][] filas = new String[100][100];
+    static int tam=0;
     public static void leer(String archivo) throws FileNotFoundException, IOException, CsvValidationException{
     String archCSV = archivo;
     CSVReader csvReader = new CSVReader(new FileReader(archCSV));
-    String[] fila = null;
+    int i=0;
     while((fila = csvReader.readNext()) != null) {
-        System.out.println(fila[0]+" "+fila[1] );
+        filas[0][i]=fila[0];
+        filas[1][i]=fila[1];
+        //System.out.println(i+" "+fila[0]+" "+fila[1] );
+        i++;
     }
-
+    tam=i;
     csvReader.close();
+    }
+    public void recorrido(){
+    for(int i=0;i<tam;i++){
+    System.out.println(i+" "+filas[0][i]+" "+filas[1][i]);
+    }
     }
 }
