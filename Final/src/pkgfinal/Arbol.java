@@ -418,4 +418,52 @@ public class Arbol {
         }
         return grafica;
     }
+    //EMPEZAR RECORRIDO INORDEN
+    public synchronized void recorridoInorden()
+    {
+        ayudanteInorden(raiz);
+    }
+    
+    //meoto recursivo para recorrido inorden
+    private void ayudanteInorden( Nodo nodo)
+    {
+        if(nodo == null)
+            return;
+        
+        ayudanteInorden(nodo.izquierda);
+        System.out.print(nodo.llave + "->");
+        ayudanteInorden(nodo.derecha);
+    }
+    // EMPIEZA EL RECORRIDO EN PREORDEN
+    public synchronized void recorridoPreorden()
+    {
+        ayudantePreorden(raiz);
+    }
+    //meoto recursivo para recorrido en preorden
+    
+    private void ayudantePreorden(Nodo nodo)
+    {
+        if(nodo == null)
+            return;
+        
+        System.out.print(nodo.llave + "->");     //mostrar datos del nodo
+        ayudantePreorden(nodo.izquierda);   //recorre subarbol izquierdo
+        ayudantePreorden(nodo.derecha);     //recorre subarbol derecho
+    }
+    //EMPEZAR RECORRIDO PORORDEN
+    public synchronized void recorridoPosorden()
+    {
+        ayudantePosorden(raiz);        
+    }
+    
+    //meotod recursivo para recorrido posorden
+    private void ayudantePosorden(Nodo nodo)
+    {
+        if( nodo == null )
+            return;
+        
+        ayudantePosorden(nodo.izquierda);
+        ayudantePosorden(nodo.derecha);
+        System.out.print(nodo.llave + "->");
+    }
 }

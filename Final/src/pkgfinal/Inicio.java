@@ -11,8 +11,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static pkgfinal.Final.arbol;
 
 /**
  *
@@ -72,7 +74,10 @@ public class Inicio extends javax.swing.JFrame {
     String select = file.getAbsolutePath(); 
         try {
             leer(select);
-            recorrido();
+            llenar();
+            mostrar();
+            arbol.recorridoInorden();
+            //recorrido();
             this.dispose();
             // TODO add your handling code here:
         } catch (IOException ex) {
@@ -121,23 +126,43 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JFileChooser jFileChooser1;
     // End of variables declaration//GEN-END:variables
     static String[] fila = null;
-    static String[][] filas = new String[100][100];
+    static String[] nombre = new String[100];
+    static int[] carne = new int[100];
     static int tam=0;
     public static void leer(String archivo) throws FileNotFoundException, IOException, CsvValidationException{
     String archCSV = archivo;
     CSVReader csvReader = new CSVReader(new FileReader(archCSV));
     int i=0;
     while((fila = csvReader.readNext()) != null) {
-        filas[0][i]=fila[0];
-        filas[1][i]=fila[1];
+        if(i>0){
+        carne[i]=Integer.parseInt(fila[0]);
+        nombre[i]=fila[1];
+        }
         i++;
     }
     tam=i;
     csvReader.close();
     }
     public void recorrido(){
-    for(int i=0;i<tam;i++){
-    System.out.println(i+" "+filas[0][i]+" "+filas[1][i]);
+    for(int i=1;i<tam;i++){
+    System.out.println(i+" "+carne[i]+" "+nombre[i]);
     }
+    }
+    public void llenar(){
+        for(int i=1;i<tam;i++){   
+        arbol.insertar(carne[i],nombre[i],"",null);
+        }
+    }
+    public void mostrar(){
+        Iterator it = arbol.graficar().iterator();
+        while(it.hasNext()){
+            String h = (String)it.next();
+            System.out.println(h);
+        }
+        if(arbol.RetornarRaiz()!=null){
+        Nodo dato =arbol.RetornarRaiz();
+        System.out.println(dato.llave);
+        System.out.println(dato.balance);
+        }
     }
 }
