@@ -7,8 +7,7 @@ var simple_chart_config = {
 		text: { name: "Parent node" },
 		children: [
 			{
-				text: { name: "null" }
-
+				text: { name: "First child" }
 			},
 			{
 				text: { name: "Second child" }

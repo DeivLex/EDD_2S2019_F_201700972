@@ -8,6 +8,7 @@ package pkgfinal;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import static pkgfinal.Final.CarneIn;
 import static pkgfinal.Final.CarnePost;
@@ -15,6 +16,8 @@ import static pkgfinal.Final.CarnePre;
 import static pkgfinal.Final.NameIn;
 import static pkgfinal.Final.NamePost;
 import static pkgfinal.Final.NamePre;
+import static pkgfinal.Final.ReporteMax;
+import static pkgfinal.Final.arbol;
 
 /**
  *
@@ -120,7 +123,7 @@ System.exit(0);        // TODO add your handling code here:
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     ReporteIndex();
     ReporteCss();
-    ReporteJs();
+    //ReporteJs();
     ReporteInorden();
     ReportePreorden();
     ReportePostorden();
@@ -237,10 +240,9 @@ public void ReporteCss(){
             e.printStackTrace();
         }
 }
+
 public void ReporteJs(){
-    try {
-        String resto="";
-        
+    try {        
             String ruta = "..\\REPORTES\\reporte.js";
             String contenido = "var simple_chart_config = {\n" +
             "	chart: {\n" +
@@ -248,16 +250,7 @@ public void ReporteJs(){
             "	},\n" +
             "	\n" +
             "	nodeStructure: {\n" +
-            "		text: { name: \"Parent node\" },\n" +
-            "		children: [\n" +
-            "			{\n" +
-            "				text: { name: \"First child\" }\n" +
-            "\n" +
-            "			},\n" +
-            "			{\n" +
-            "				text: { name: \"Second child\" }\n" +
-            "			}\n" +
-            "		]\n" +
+            ReporteMax+
             "	}\n" +
             "};";
             File file = new File(ruta);

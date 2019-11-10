@@ -19,6 +19,7 @@ public class Final {
     public static ArrayList CarnePre = new ArrayList();
     public static ArrayList NamePost = new ArrayList();
     public static ArrayList CarnePost = new ArrayList();
+    public static String ReporteMax="";
     /**
      * @param args the command line arguments
      */

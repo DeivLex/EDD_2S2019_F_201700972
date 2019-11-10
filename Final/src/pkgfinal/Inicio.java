@@ -21,6 +21,7 @@ import static pkgfinal.Final.CarnePre;
 import static pkgfinal.Final.NameIn;
 import static pkgfinal.Final.NamePost;
 import static pkgfinal.Final.NamePre;
+import static pkgfinal.Final.ReporteMax;
 import static pkgfinal.Final.arbol;
 
 /**
@@ -41,7 +42,7 @@ public class Inicio extends javax.swing.JFrame {
         NamePre.clear();
         CarnePost.clear();
         NamePost.clear();
-        
+        ReporteMax="";
     }
 
     /**
