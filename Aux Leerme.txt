@@ -1,0 +1,2 @@
+Agregar todos los .jar a la carpeta "LIBRERIA_OpenCsv"
+Los reportes se generan en la carpeta "REPORTES"

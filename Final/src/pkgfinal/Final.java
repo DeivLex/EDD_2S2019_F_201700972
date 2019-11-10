@@ -5,12 +5,20 @@
  */
 package pkgfinal;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Davis
  */
 public class Final {
     public static Arbol arbol = new Arbol();
+    public static ArrayList NameIn = new ArrayList();
+    public static ArrayList CarneIn = new ArrayList();
+    public static ArrayList NamePre = new ArrayList();
+    public static ArrayList CarnePre = new ArrayList();
+    public static ArrayList NamePost = new ArrayList();
+    public static ArrayList CarnePost = new ArrayList();
     /**
      * @param args the command line arguments
      */

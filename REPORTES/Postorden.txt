@@ -1,0 +1,19 @@
+digraph G {
+ node [shape=box];
+ rankdir=LR;
+0[label="199821317 \n Maria"]
+1[label="201798987 \n Marcos "]
+0->1
+1[label="201798987 \n Marcos"]
+2[label="201121354 \n Nona "]
+1->2
+2[label="201121354 \n Nona"]
+3[label="201832134 \n Tito "]
+2->3
+3[label="201832134 \n Tito"]
+4[label="201978954 \n Esteban "]
+3->4
+4[label="201978954 \n Esteban"]
+5[label="201800972 \n Hola "]
+4->5
+}

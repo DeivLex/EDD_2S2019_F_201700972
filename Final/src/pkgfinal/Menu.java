@@ -5,6 +5,17 @@
  */
 package pkgfinal;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import javax.swing.JOptionPane;
+import static pkgfinal.Final.CarneIn;
+import static pkgfinal.Final.CarnePost;
+import static pkgfinal.Final.CarnePre;
+import static pkgfinal.Final.NameIn;
+import static pkgfinal.Final.NamePost;
+import static pkgfinal.Final.NamePre;
+
 /**
  *
  * @author Davis
@@ -43,6 +54,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton2.setText("Reportes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Salir");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +117,20 @@ Inicio v = new Inicio();
 System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    ReporteIndex();
+    ReporteCss();
+    ReporteJs();
+    ReporteInorden();
+    ReportePreorden();
+    ReportePostorden();
+    GenerarImagen("Inorden");
+    GenerarImagen("Preorden");
+    GenerarImagen("Postorden");
+    JOptionPane.showMessageDialog(null, "Reportes generados en carpeta REPORTES");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -142,4 +172,214 @@ System.exit(0);        // TODO add your handling code here:
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+public void ReporteIndex(){
+    try {
+            String ruta = "..\\REPORTES\\Index.html";
+            String contenido = "<!DOCTYPE html>\n" +
+            "<html>\n" +
+            "    <head>\n" +
+            "    <meta charset=\"utf-8\">\n" +
+            "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n" +
+            "    <meta name=\"viewport\" content=\"width=device-width\">\n" +
+            "	<title> Chart emulation </title>\n" +
+            "	<link rel=\"stylesheet\" href=\"../treant-js-master/Treant.css\">\n" +
+            "	<link rel=\"stylesheet\" href=\"reporte.css\">\n" +
+            "</head>\n" +
+            "<body>\n" +
+            "	<div class=\"chart\" id=\"OrganiseChart-simple\">\n" +
+            "	</div>\n" +
+            "	\n" +
+            "	<script src=\"../treant-js-master/vendor/raphael.js\"></script>\n" +
+            "	<script src=\"../treant-js-master/Treant.js\"></script>\n" +
+            "	<script src=\"reporte.js\"></script>\n" +
+            "\n" +
+            "	<script>\n" +
+            "		new Treant( simple_chart_config );\n" +
+            "	</script>\n" +
+            "\n" +
+            "</body>\n" +
+            "</html>";
+            File file = new File(ruta);
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(contenido);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+public void ReporteCss(){
+    try {
+            String ruta = "..\\REPORTES\\reporte.css";
+            String contenido = "body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }\n" +
+            "\n" +
+            "\n" +
+            "body { background: #fff; }\n" +
+            "\n" +
+            "/* optional Container STYLES */\n" +
+            ".chart { height: 800px; width: 1600px; margin: 5px; margin: 5px auto; border: 3px solid #DDD; border-radius: 3px; }\n" +
+            ".node { color: #9CB5ED; border: 2px solid #C8C8C8; border-radius: 3px; }\n" +
+            ".node p { font-size: 20px; line-height: 20px; height: 20px; font-weight: bold; padding: 3px; margin: 0; }";
+            File file = new File(ruta);
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(contenido);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 }
+public void ReporteJs(){
+    try {
+        String resto="";
+        
+            String ruta = "..\\REPORTES\\reporte.js";
+            String contenido = "var simple_chart_config = {\n" +
+            "	chart: {\n" +
+            "		container: \"#OrganiseChart-simple\"\n" +
+            "	},\n" +
+            "	\n" +
+            "	nodeStructure: {\n" +
+            "		text: { name: \"Parent node\" },\n" +
+            "		children: [\n" +
+            "			{\n" +
+            "				text: { name: \"First child\" }\n" +
+            "\n" +
+            "			},\n" +
+            "			{\n" +
+            "				text: { name: \"Second child\" }\n" +
+            "			}\n" +
+            "		]\n" +
+            "	}\n" +
+            "};";
+            File file = new File(ruta);
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(contenido);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
+public void ReporteInorden(){
+    try {
+            String ruta = "..\\REPORTES\\Inorden.txt";
+            String resto="";
+            for(int i=0;i<CarneIn.size()-1;i++){
+            resto+=i+"[label=\""+CarneIn.get(i)+" \\n "+NameIn.get(i)+"\"]\n" +
+            (i+1)+"[label=\""+CarneIn.get(i+1)+" \\n "+NameIn.get(i+1)+" \"]\n" +
+            i+"->"+(i+1)+"\n";
+            }
+            String contenido = "digraph G {\n" +
+            " node [shape=box];\n" +
+            " rankdir=LR;\n" +
+            resto+
+            "}";
+            File file = new File(ruta);
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(contenido);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
+public void ReportePreorden(){
+    try {
+            String ruta = "..\\REPORTES\\Preorden.txt";
+            String resto="";
+            for(int i=0;i<CarnePre.size()-1;i++){
+            resto+=i+"[label=\""+CarnePre.get(i)+" \\n "+NamePre.get(i)+"\"]\n" +
+            (i+1)+"[label=\""+CarnePre.get(i+1)+" \\n "+NamePre.get(i+1)+" \"]\n" +
+            i+"->"+(i+1)+"\n";
+            }
+            String contenido = "digraph G {\n" +
+            " node [shape=box];\n" +
+            " rankdir=LR;\n" +
+            resto+
+            "}";
+            File file = new File(ruta);
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(contenido);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
+public void ReportePostorden(){
+    try {
+            String ruta = "..\\REPORTES\\Postorden.txt";
+            String resto="";
+            for(int i=0;i<CarnePost.size()-1;i++){
+            resto+=i+"[label=\""+CarnePost.get(i)+" \\n "+NamePost.get(i)+"\"]\n" +
+            (i+1)+"[label=\""+CarnePost.get(i+1)+" \\n "+NamePost.get(i+1)+" \"]\n" +
+            i+"->"+(i+1)+"\n";
+            }
+            String contenido = "digraph G {\n" +
+            " node [shape=box];\n" +
+            " rankdir=LR;\n" +
+            resto+
+            "}";
+            File file = new File(ruta);
+            // Si el archivo no existe es creado
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(contenido);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
+public void GenerarImagen(String name){
+try {
+      
+      String dotPath = "..\\dot.exe";
+      
+      String fileInputPath = "..\\REPORTES\\"+name+".txt";
+      String fileOutputPath = "..\\REPORTES\\"+name+".jpg";
+      
+      String tParam = "-Tjpg";
+      String tOParam = "-o";
+        
+      String[] cmd = new String[5];
+      cmd[0] = dotPath;
+      cmd[1] = tParam;
+      cmd[2] = fileInputPath;
+      cmd[3] = tOParam;
+      cmd[4] = fileOutputPath;
+                  
+      Runtime rt = Runtime.getRuntime();
+      
+      rt.exec( cmd );
+      
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    } finally {
+    }
+}
+}
+

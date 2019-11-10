@@ -14,6 +14,13 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static pkgfinal.Final.CarneIn;
+import static pkgfinal.Final.CarnePost;
+import static pkgfinal.Final.CarnePre;
+import static pkgfinal.Final.NameIn;
+import static pkgfinal.Final.NamePost;
+import static pkgfinal.Final.NamePre;
 import static pkgfinal.Final.arbol;
 
 /**
@@ -28,6 +35,13 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         this.setLocationRelativeTo(null);
+        CarneIn.clear();
+        NameIn.clear();
+        CarnePre.clear();
+        NamePre.clear();
+        CarnePost.clear();
+        NamePost.clear();
+        
     }
 
     /**
@@ -77,7 +91,8 @@ public class Inicio extends javax.swing.JFrame {
             llenar();
             mostrar();
             arbol.recorridoInorden();
-            //recorrido();
+            arbol.recorridoPreorden();
+            arbol.recorridoPosorden();
             this.dispose();
             // TODO add your handling code here:
         } catch (IOException ex) {
@@ -85,6 +100,7 @@ public class Inicio extends javax.swing.JFrame {
         } catch (CsvValidationException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
+        JOptionPane.showMessageDialog(null, "Carga Completa");
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
@@ -135,21 +151,20 @@ public class Inicio extends javax.swing.JFrame {
     int i=0;
     while((fila = csvReader.readNext()) != null) {
         if(i>0){
+        if(fila[1].equalsIgnoreCase("null")){
+        i--;
+        }else{
         carne[i]=Integer.parseInt(fila[0]);
         nombre[i]=fila[1];
+        }
         }
         i++;
     }
     tam=i;
     csvReader.close();
     }
-    public void recorrido(){
-    for(int i=1;i<tam;i++){
-    System.out.println(i+" "+carne[i]+" "+nombre[i]);
-    }
-    }
     public void llenar(){
-        for(int i=1;i<tam;i++){   
+        for(int i=1;i<tam;i++){
         arbol.insertar(carne[i],nombre[i],"",null);
         }
     }

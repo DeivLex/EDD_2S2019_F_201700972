@@ -5,6 +5,12 @@
 package pkgfinal;
 
 import java.util.LinkedList;
+import static pkgfinal.Final.CarneIn;
+import static pkgfinal.Final.CarnePost;
+import static pkgfinal.Final.CarnePre;
+import static pkgfinal.Final.NameIn;
+import static pkgfinal.Final.NamePost;
+import static pkgfinal.Final.NamePre;
 
 /**
  *
@@ -431,7 +437,8 @@ public class Arbol {
             return;
         
         ayudanteInorden(nodo.izquierda);
-        System.out.print(nodo.llave + "->");
+        CarneIn.add(nodo.llave);
+        NameIn.add(nodo.Titulo);
         ayudanteInorden(nodo.derecha);
     }
     // EMPIEZA EL RECORRIDO EN PREORDEN
@@ -446,7 +453,8 @@ public class Arbol {
         if(nodo == null)
             return;
         
-        System.out.print(nodo.llave + "->");     //mostrar datos del nodo
+        CarnePre.add(nodo.llave);
+        NamePre.add(nodo.Titulo);
         ayudantePreorden(nodo.izquierda);   //recorre subarbol izquierdo
         ayudantePreorden(nodo.derecha);     //recorre subarbol derecho
     }
@@ -464,6 +472,7 @@ public class Arbol {
         
         ayudantePosorden(nodo.izquierda);
         ayudantePosorden(nodo.derecha);
-        System.out.print(nodo.llave + "->");
+        CarnePost.add(nodo.llave);
+        NamePost.add(nodo.Titulo);
     }
 }
