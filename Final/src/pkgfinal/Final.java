@@ -10,12 +10,11 @@ package pkgfinal;
  * @author Davis
  */
 public class Final {
-    public static Arbol arbol = new Arbol();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Inicio v = new Inicio();
+        Menu v = new Menu();
         v.show();
     }    
 }

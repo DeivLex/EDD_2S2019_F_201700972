@@ -124,7 +124,7 @@ public class Inicio extends javax.swing.JFrame {
     CSVReader csvReader = new CSVReader(new FileReader(archCSV));
     String[] fila = null;
     while((fila = csvReader.readNext()) != null) {
-        System.out.println(fila[0]);
+        System.out.println(fila[0]+" "+fila[1] );
     }
 
     csvReader.close();
