@@ -130,7 +130,6 @@ public class Inicio extends javax.swing.JFrame {
     while((fila = csvReader.readNext()) != null) {
         filas[0][i]=fila[0];
         filas[1][i]=fila[1];
-        //System.out.println(i+" "+fila[0]+" "+fila[1] );
         i++;
     }
     tam=i;
